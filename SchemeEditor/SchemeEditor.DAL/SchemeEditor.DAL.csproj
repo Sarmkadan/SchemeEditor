@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="linq2db.PostgreSQL" Version="2.7.4" />
+      <PackageReference Include="Mapster" Version="4.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SchemeEditor.Abstraction\SchemeEditor.Abstraction.csproj" />
+      <ProjectReference Include="..\SchemeEditor.Domain\SchemeEditor.Domain.csproj" />
+      <ProjectReference Include="..\SchemeEditor.Indentity\SchemeEditor.Identity.csproj" />
+    </ItemGroup>
+
+</Project>

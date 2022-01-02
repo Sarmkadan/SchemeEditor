@@ -1,0 +1,20 @@
+<nav class="navigation-menu" [ngStyle]="{'visibility': visible ? 'visible' : 'hidden'}">
+	<a class="navigation-menu__item" [routerLinkActiveOptions]="{exact: true}" routerLink="" routerLinkActive="navigation-menu__item--active">
+		<mat-icon svgIcon="folder" aria-hidden="false" aria-label="Список схем"></mat-icon>
+	</a>
+	<a *ngIf="!editIsDisabled" class="navigation-menu__item" [routerLinkActiveOptions]="{exact: true}" routerLink="editor" routerLinkActive="navigation-menu__item--active">
+		<mat-icon svgIcon="edit" aria-hidden="false" aria-label="Редактор схем"></mat-icon>
+	</a>
+	<a *ngIf="editIsDisabled" class="navigation-menu__item navigation-menu__item__unactive" routerLinkActive="navigation-menu__item--active">
+		<mat-icon svgIcon="edit" aria-hidden="false" aria-label="Редактор схем"></mat-icon>
+	</a>
+	<a class="navigation-menu__item notification" [ngClass]="{'notification--unread': hasUnread}" [routerLinkActiveOptions]="{exact: true}" routerLink="notifications" routerLinkActive="navigation-menu__item--active">
+		<mat-icon svgIcon="notifications" aria-hidden="false" aria-label="Уведомления"></mat-icon>
+	</a>
+	<a class="navigation-menu__item" [routerLinkActiveOptions]="{exact: true}" routerLink="settings" routerLinkActive="navigation-menu__item--active">
+		<mat-icon svgIcon="settings" aria-hidden="false" aria-label="Настройки"></mat-icon>
+	</a>
+</nav>
+<span class="navigation-menu__profile" *ngIf="currentUser"  [ngStyle]="{'visibility': visible ? 'visible' : 'hidden'}">
+	<mat-icon svgIcon="account" aria-hidden="false" aria-label="Профиль" (click)="openProfile()"></mat-icon>
+</span>

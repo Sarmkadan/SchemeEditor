@@ -1,0 +1,109 @@
+<div class="user-profile">
+	<form class="user-profile__wrapper" [formGroup]="formGroup">
+		<header class="user-profile__header">Профиль</header>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="* Фамилия" [formControl]="lastNameFormControl" [errorStateMatcher]="matcher" />
+			<mat-error *ngIf="lastNameFormControl.hasError('minLength') && !lastNameFormControl.hasError('required')">
+				Пожалуйста, введите действительную фамилию
+			</mat-error>
+			<mat-error *ngIf="lastNameFormControl.hasError('required')">
+				Фамилия обязательна для заполнения
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="* Имя" [formControl]="firstNameFormControl" [errorStateMatcher]="matcher" />
+			<mat-error *ngIf="firstNameFormControl.hasError('minLength') && !firstNameFormControl.hasError('required')">
+				Пожалуйста, введите действительную имя
+			</mat-error>
+			<mat-error *ngIf="firstNameFormControl.hasError('required')">
+					Имя обязательна для заполнения
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="Отчество" [formControl]="middleNameFormControl" />
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="Город" [formControl]="cityFormControl" />
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="* Организация" [formControl]="companyFormControl" [errorStateMatcher]="matcher" />
+			<mat-error *ngIf="companyFormControl.hasError('minLength') && !companyFormControl.hasError('required')">
+				Пожалуйста, введите действительную фамилию
+			</mat-error>
+			<mat-error *ngIf="companyFormControl.hasError('required')">
+				Фамилия обязательна для заполнения
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="Должность" [formControl]="positionFormControl" />
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="* Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" />
+			<mat-hint *ngIf="isCurrentUser">После смены нужно будет подтверждение</mat-hint>
+			<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+				Пожалуйста, введите действительный Email
+			</mat-error>
+			<mat-error *ngIf="emailFormControl.hasError('required')">
+				Email обязателен для заполнения
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field">
+			<input matInput type="text" placeholder="* Телефон" [formControl]="phoneFormControl" [errorStateMatcher]="matcher" />
+			<mat-hint *ngIf="isCurrentUser">После смены нужно будет подтверждение</mat-hint>
+			<mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+				Пожалуйста, введите действительный Телефон
+			</mat-error>
+			<mat-error *ngIf="phoneFormControl.hasError('required')">
+				Телефон обязателен для заполнения
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field" *ngIf="isCurrentUser">
+			<input matInput type="password" placeholder="Старый пароль" [formControl]="oldPasswordFormControl" />
+			<mat-error *ngIf="oldPasswordFormControl.hasError('passwordChangeValidatorAsync')">
+				Старый пароль неверен
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="user-profile__field" *ngIf="isCurrentUser">
+			<input matInput type="password" placeholder="Пароль" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" />
+			<mat-error *ngIf="passwordFormControl.hasError('passwordChangeValidator') || oldPasswordFormControl.hasError('passwordChangeValidatorAsync')">
+				Нужно сначала указать старый пароль
+			</mat-error>
+		</mat-form-field>
+	</form>
+	<mat-accordion class="user-profile__admin-settings admin-settings" *ngIf="isAdmin">
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Административные настройки
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<div class="admin-settings__group">
+				<mat-form-field class="admin-settings__field">
+					<mat-label>Роль</mat-label>
+					<mat-select [formControl]="roleFormControl">
+						<mat-option *ngFor="let role of roles" [value]="role?.normalizedName">
+							{{role.name}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-slide-toggle
+					[formControl]="isBlockedFormControl"
+					class="admin-settings__field"
+					[color]="'primary'"
+					[checked]="user?.isBlocked"
+					(change)="onBlockedChange($event)">
+					Заблокирован
+				</mat-slide-toggle>
+				<div class="admin-settings__field button-set">
+					<button *ngIf="!isCurrentUser" class="button-set__reset-password" mat-raised-button color="primary" (click)="resetPassword()">Сбросить пароль</button>
+					<button *ngIf="!isCurrentUser" class="button-set__delete" mat-raised-button color="warn" (click)="deleteUser()">Удалить</button>
+				</div>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
+	<div class="user-profile__button-set button-set">
+		<button [disabled]="!formGroup.dirty" mat-raised-button color="primary" (click)="save()">Сохранить</button>
+		<button mat-raised-button color="basic" (click)="onCancel()">Отменить</button>
+		<button *ngIf="isCurrentUser" class="button-set__logout"  mat-raised-button color="accent" (click)="logout()">Выйти</button>
+	</div>
+</div>

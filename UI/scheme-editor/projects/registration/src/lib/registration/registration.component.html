@@ -1,0 +1,65 @@
+<form class="registration__wrapper">
+	<header class="registration__header">Регистрация</header>
+	<mat-form-field class="registration__field">
+		<input matInput type="phone" placeholder="* Телефон" [formControl]="phoneFormControl" [errorStateMatcher]="matcher" />
+		<mat-error *ngIf="phoneFormControl.hasError('pattern') && !phoneFormControl.hasError('required')">
+			Пожалуйста, введите действительный телефон
+		</mat-error>
+		<mat-error *ngIf="phoneFormControl.hasError('required')">
+			Телефон обязателен для заполнения
+		</mat-error>
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput name="email" type="email" placeholder="* Email" [formControl]="emailFormControl" [errorStateMatcher]="matcher" />
+		<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+			Пожалуйста, введите действительный адрес электронной почты
+		</mat-error>
+		<mat-error *ngIf="emailFormControl.hasError('required')">
+			Адрес электронной почты обязателен для заполнения
+		</mat-error>
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="* Фамилия" [formControl]="lastNameFormControl" [errorStateMatcher]="matcher" />
+		<mat-error *ngIf="lastNameFormControl.hasError('minLength') && !lastNameFormControl.hasError('required')">
+			Пожалуйста, введите действительную фамилию
+		</mat-error>
+		<mat-error *ngIf="lastNameFormControl.hasError('required')">
+			Фамилия обязательна для заполнения
+		</mat-error>
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="* Имя" [formControl]="firstNameFormControl" [errorStateMatcher]="matcher" />
+		<mat-error *ngIf="firstNameFormControl.hasError('minLength') && !firstNameFormControl.hasError('required')">
+			Пожалуйста, введите имя
+		</mat-error>
+		<mat-error *ngIf="firstNameFormControl.hasError('required')">
+			Имя обязателено для заполнения
+		</mat-error>
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="Отчество" [formControl]="middleNameFormControl" />
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="Город" [formControl]="cityFormControl" />
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="* Организация" [formControl]="companyFormControl" [errorStateMatcher]="matcher" />
+		<mat-error *ngIf="companyFormControl.hasError('minLength') && !companyFormControl.hasError('required')">
+			Пожалуйста, введите действительную организацию
+		</mat-error>
+		<mat-error *ngIf="companyFormControl.hasError('required')">
+			Организация обязателена для заполнения
+		</mat-error>
+	</mat-form-field>
+	<mat-form-field class="registration__field">
+		<input matInput type="text" placeholder="Должность" [formControl]="positionFormControl" />
+	</mat-form-field>
+	<mat-checkbox class="login__field" [formControl]="acceptFormControl">* Принять <a href="#" (click)="displayConditions($event)">условия лицензионного соглашения</a></mat-checkbox>
+	<mat-error *ngIf="(acceptFormControl.hasError('requiredTrue') || acceptFormControl.hasError('required')) && acceptTermsValidated">
+		Нужно принять условия лицензаонного соглашения
+	</mat-error>
+	<div class="registration__recapcha">
+		<re-captcha *ngIf="key" (resolved)="resolved()" [siteKey]="key"></re-captcha>
+	</div>
+	<button class="login__submit"  mat-raised-button color="primary" (click)="register()">Зарегистрироваться</button>
+</form>

@@ -1,0 +1,55 @@
+<div class="header">
+		<span class="title">
+			{{checkedDelete ? 'Удаленные схемы' : 'Список схем'}}
+		</span>
+
+	<button *ngIf="!checkedDelete" mat-raised-button color="primary" class="btn_create" (click)="showDialog()">
+		Создать схему
+	</button>
+
+	<div class="toggle_right">
+		<mat-slide-toggle [checked]="checkedDelete"
+						  color="primary"
+						  (change)="onChangeToggle($event.checked)"
+						  labelPosition="before"
+		>
+			Удаленные
+		</mat-slide-toggle>
+	</div>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef> Название </th>
+		<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+	</ng-container>
+
+	<!-- Name Column -->
+	<ng-container matColumnDef="createdBy">
+		<th mat-header-cell *matHeaderCellDef> Автор </th>
+		<td mat-cell *matCellDef="let element"> {{getName(element)}} </td>
+	</ng-container>
+
+	<!-- Weight Column -->
+	<ng-container matColumnDef="createdAt">
+		<th mat-header-cell *matHeaderCellDef> Дата создания </th>
+		<td mat-cell *matCellDef="let element"> {{element.createdAt | dateMoment: 'YYYY-MM-DDTHH:mm:ss':'DD.MM.YYYY HH:mm:ss'}} </td>
+	</ng-container>
+
+	<!-- Symbol Column -->
+	<ng-container matColumnDef="edit">
+		<th mat-header-cell *matHeaderCellDef></th>
+		<td mat-cell *matCellDef="let element">
+			<button *ngIf="!checkedDelete" mat-raised-button color="accent" class="btn_edit" (click)="onEdit(element)">Редактировать</button>
+			<button *ngIf="checkedDelete" mat-raised-button color="accent" class="btn_edit" (click)="onRestore(element)">Восстановить</button>
+		</td>
+	</ng-container>
+	<ng-container matColumnDef="delete">
+		<th mat-header-cell *matHeaderCellDef> </th>
+		<td mat-cell *matCellDef="let element">
+			<button mat-raised-button color="warn" class="btn_delete" (click)="onMarkDelete(element)">Удалить</button>
+		</td>
+	</ng-container>
+
+	<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+	<tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

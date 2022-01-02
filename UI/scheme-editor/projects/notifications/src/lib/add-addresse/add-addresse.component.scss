@@ -1,0 +1,48 @@
+@import '../../../../../projects/ui/src/lib/styles/variables.scss';
+
+add-addresse {
+	display: flex;
+	flex-flow: column nowrap;
+	h2 {
+		margin-bottom: 10px;
+	}
+	.addresse {
+		&__wrapper {
+			overflow-y: auto;
+			max-height: 510px;
+			table {
+				width: 100%;
+				td {
+					vertical-align: middle;
+				}
+				.mat-column {
+					&-cmd {
+						width: 50px;
+						padding: 0;
+						box-sizing: border-box;
+						text-align: center;
+					}
+				}
+				.mat-header-row {
+					th {
+						background-color: $activeBackground;
+					}
+				}
+			}
+		}
+		&__groups {
+			margin-bottom: 10px;
+		}
+	}
+	.button-set {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+
+	.hide-count {
+		.mat-paginator-range-label {
+			display: none;
+		}
+	}
+}

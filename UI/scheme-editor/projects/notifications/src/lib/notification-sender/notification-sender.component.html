@@ -1,0 +1,66 @@
+
+<mat-card class="notification-sender">
+	<mat-card-header>
+		<mat-card-title>Создать рассылку</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="notification-sender__form">
+			<mat-form-field>
+				<input matInput placeholder="Тема"  type="text" [(ngModel)]="title">
+			</mat-form-field>
+			<mat-form-field>
+				<textarea matInput placeholder="Текст"  rows="10" [(ngModel)]="text"></textarea>
+			</mat-form-field>
+			<div class="notification-sender__addresses">
+				<span *ngFor="let item of addresse; let last=last;">{{item.title}}<span *ngIf="!last">,</span>&nbsp;</span>
+			</div>
+			<button class="notification-sender__addresses-add" mat-raised-button color="basic" (click)="displayAddAddresse()">Добавить получателей</button>
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						История рассылок
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<div class="notification-sender__group">
+					<table mat-table [dataSource]="dataSource">
+						<ng-container matColumnDef="from">
+							<th mat-header-cell *matHeaderCellDef>Автор</th>
+							<td mat-cell *matCellDef="let element">
+								{{ element.from }}
+							</td>
+						</ng-container>
+						<ng-container matColumnDef="to">
+							<th mat-header-cell *matHeaderCellDef>Кому</th>
+							<td mat-cell *matCellDef="let element">
+								{{ element.to }}
+							</td>
+						</ng-container>
+						<ng-container matColumnDef="title">
+							<th mat-header-cell *matHeaderCellDef>Тема</th>
+							<td mat-cell *matCellDef="let element">
+								{{element.title}}
+							</td>
+						</ng-container>
+						<ng-container matColumnDef="cmd">
+							<th mat-header-cell *matHeaderCellDef></th>
+							<td mat-cell *matCellDef="let element">
+								<button class="notification-sender__field delete-button" mat-raised-button color="warn" (click)="deleteMessage(element)">Удалить</button>
+							</td>
+						</ng-container>
+
+						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+						<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+					</table>
+					<mat-paginator
+						[ngClass]="{'hide-count': length===0}"
+						[length]="length"
+						[pageSize]="pageSize"
+						[pageSizeOptions]="[5, 10, 25, 100]"
+						(page)="onPageChanged($event)">
+					</mat-paginator>
+				</div>
+			</mat-expansion-panel>
+		</div>
+		<button mat-raised-button color="primary" (click)="send()" class="notification-sender__send">Отправить</button>
+	</mat-card-content>
+</mat-card>

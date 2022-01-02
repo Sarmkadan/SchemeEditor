@@ -1,0 +1,106 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "shared": [
+        "dist/shared"
+      ],
+      "shared/*": [
+        "dist/shared/*"
+      ],
+      "core": [
+        "dist/core"
+      ],
+      "core/*": [
+        "dist/core/*"
+      ],
+      "ui": [
+        "dist/ui"
+      ],
+      "ui/*": [
+        "dist/ui/*"
+      ],
+      "scheme-list": [
+        "dist/scheme-list"
+      ],
+      "scheme-list/*": [
+        "dist/scheme-list/*"
+      ],
+      "rest": [
+        "dist/rest"
+      ],
+      "rest/*": [
+        "dist/rest/*"
+      ],
+      "authentication": [
+        "dist/authentication"
+      ],
+      "authentication/*": [
+        "dist/authentication/*"
+      ],
+      "registration": [
+        "dist/registration"
+      ],
+      "registration/*": [
+        "dist/registration/*"
+      ],
+      "login": [
+        "dist/login"
+      ],
+      "login/*": [
+        "dist/login/*"
+      ],
+      "user-profile": [
+        "dist/user-profile"
+      ],
+      "user-profile/*": [
+        "dist/user-profile/*"
+      ],
+      "scheme-editor-page": [
+        "dist/scheme-editor-page"
+      ],
+      "scheme-editor-page/*": [
+        "dist/scheme-editor-page/*"
+      ],
+      "admin-panel": [
+        "dist/admin-panel"
+      ],
+      "admin-panel/*": [
+        "dist/admin-panel/*"
+      ],
+      "notifications": [
+        "dist/notifications"
+      ],
+      "notifications/*": [
+        "dist/notifications/*"
+      ],
+      "cookie-warning": [
+        "dist/cookie-warning"
+      ],
+      "cookie-warning/*": [
+        "dist/cookie-warning/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

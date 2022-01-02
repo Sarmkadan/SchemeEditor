@@ -1,0 +1,22 @@
+create-scheme-dialog .create-scheme-dialog
+{
+	&__form {
+		display: flex;
+		flex-flow: column;
+		.form {
+			&__name {
+				width: 100%;
+			}
+			&__button {
+				width: 45%;
+			}
+		}
+
+		.button-set {
+			width: 100%;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between
+		}
+	}
+}

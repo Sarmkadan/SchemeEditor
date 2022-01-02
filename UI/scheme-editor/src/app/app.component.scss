@@ -1,0 +1,11 @@
+.app-wrapper {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	&__navigation {
+		height: 100%;
+	}
+	&__content {
+		height: 100%;
+	}
+}

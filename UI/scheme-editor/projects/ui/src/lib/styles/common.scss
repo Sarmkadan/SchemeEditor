@@ -1,0 +1,14 @@
+body {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 14px;
+	color: rgb(36, 36, 36);
+	table {
+		.mat-header-row {
+			height: initial;
+			th {
+				padding: 10px;
+				font-weight: bold;
+			}
+		}
+	}
+}

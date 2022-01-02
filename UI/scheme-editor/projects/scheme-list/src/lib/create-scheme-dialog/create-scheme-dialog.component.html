@@ -1,0 +1,30 @@
+<form class="create-scheme-dialog__form form">
+	<mat-form-field class="form__name">
+		<input
+			matInput
+			class="form__name"
+			placeholder="Название"
+			[(ngModel)]="name"
+			name="name"
+		/>
+	</mat-form-field>
+	<div class="button-set">
+		<button
+			mat-raised-button
+			color="primary"
+			class="form__button"
+			type="submit"
+			(click)="onCreate()"
+		>
+			Создать
+		</button>
+		<button
+			mat-raised-button
+			color="warn"
+			class="form__button"
+			(click)="onCancel()"
+		>
+			Отмена
+		</button>
+	</div>
+</form>

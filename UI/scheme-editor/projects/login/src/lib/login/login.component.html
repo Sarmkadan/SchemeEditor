@@ -1,0 +1,16 @@
+<div class="login__wrapper">
+	<header class="login__header">Авторизация</header>
+	<mat-form-field class="login__field">
+		<input matInput type="text" placeholder="Логин" [(ngModel)]="loginModel.login" />
+	</mat-form-field>
+	<mat-form-field class="login__field">
+		<input matInput type="password" placeholder="Пароль" [(ngModel)]="loginModel.password" />
+	</mat-form-field>
+	<mat-checkbox class="login__field" [(ngModel)]="loginModel.remember">Запомнить</mat-checkbox>
+	<a href="#" (click)="onForgot($event)">Забыли пароль?</a>
+	<button class="login__submit" mat-raised-button color="primary" (click)="login()">Войти</button>
+	<span>или</span>
+	<a routerLink="/registration">Зарегистрироваться</a>
+</div>
+
+<cookie-warning></cookie-warning>

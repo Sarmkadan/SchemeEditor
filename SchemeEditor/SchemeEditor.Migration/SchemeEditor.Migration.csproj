@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <StartupObject></StartupObject>
+        <ApplicationIcon />
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <OutputPath>..\SchemeEditor.API\bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\SchemeEditor.API\bin\Release\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentMigrator" Version="3.2.1" />
+      <PackageReference Include="FluentMigrator.Runner" Version="3.2.1" />
+      <PackageReference Include="FluentMigrator.Runner.Core" Version="3.2.1" />
+      <PackageReference Include="FluentMigrator.Runner.Postgres" Version="3.2.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+      <PackageReference Include="Npgsql" Version="4.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+        <HintPath>..\..\..\..\..\Users\Panda\.nuget\packages\microsoft.extensions.configuration\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SchemeEditor.Domain\SchemeEditor.Domain.csproj" />
+      <ProjectReference Include="..\SchemeEditor.Indentity\SchemeEditor.Identity.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="MigratorStart.cmd">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    
+</Project>

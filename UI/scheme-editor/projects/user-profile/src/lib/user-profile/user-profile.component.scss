@@ -1,0 +1,64 @@
+user-profile {
+	.user-profile {
+		&__header {
+			width: 100%;
+			margin-bottom: 10px;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		&__wrapper{
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+		}
+		&__field{
+			display: block;
+			width: 48%;
+			padding-top: 10px;
+			margin-bottom: 15px;
+		}
+		&__button-set{
+			button {
+				margin-right: 10px;
+			}
+		}
+		.button-set {
+			width: 100%;
+			&__logout{
+				float: right;
+				margin-right: 0;
+			}
+		}
+		&__admin-settings {
+			display: block;
+			margin-bottom: 10px;
+			.mat-expansion-panel-header-title{
+				font-weight: bold;
+				font-size: 13px;
+			}
+			.admin-settings {
+				&__group {
+					display: flex;
+					flex-flow: row wrap;
+					justify-content: space-between;
+					align-items: baseline;
+				}
+				&__field {
+					&.button-set {
+						display: flex;
+						flex-flow: row nowrap;
+						justify-content: space-between;
+					}
+					.button-set{
+						&__reset-password {
+							width: 49%;
+						}
+						&__delete {
+							width: 49%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,42 @@
+.header {
+	margin: 10px;
+}
+
+.title {
+	font-size: 20px;
+}
+
+table {
+	width: 100%;
+}
+
+.cdk-column-name {
+	width: 40%;
+	vertical-align: middle;
+}
+
+.btn_edit {
+	margin-right: 5px;
+}
+
+.cdk-column-createdBy {
+	width: 20%;
+	vertical-align: middle;
+}
+.cdk-column-createdAt {
+	width: 20%;
+	vertical-align: middle;
+}
+.cdk-column-edit {
+	width: 10%;
+	vertical-align: middle;
+	text-align: center;
+}
+.cdk-column-delete {
+	width: 10%;
+	vertical-align: middle;
+	text-align: center;
+}
+.toggle_right {
+	float: right;
+}

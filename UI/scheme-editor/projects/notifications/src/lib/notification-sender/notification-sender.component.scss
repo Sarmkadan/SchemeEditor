@@ -1,0 +1,61 @@
+notification-sender {
+	width: 49%;
+	height: 100%;
+	.notification-sender {
+		height: 100%;
+		width: 100%;
+		box-sizing: border-box;
+		display: flex;
+		flex-flow: column;
+		&__form {
+			display: flex;
+			flex-flow: column nowrap;
+			mat-form-field {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		mat-card-content {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: space-between;
+			height: 100%;
+		}
+		&__send {
+			width: 100%;
+		}
+		&__addresses {
+			padding: 10px 0px;
+			font-weight: bold;
+			&-add {
+				margin-bottom: 10px;
+			}
+		}
+		&__group {
+			display: flex;
+			flex-flow: column nowrap;
+			table {
+				width: 100%;
+				.mat-column{
+					&-cmd {
+						width: 80px;
+						padding: 0;
+						box-sizing: border-box;
+					}
+				}
+			}
+			.mat-cell{
+				width: 30%;
+			}
+			.mat-paginator-page-size-label {
+				white-space: nowrap;
+			}
+		}
+	}
+
+	.hide-count {
+		.mat-paginator-range-label {
+			display: none;
+		}
+	}
+}

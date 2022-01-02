@@ -1,0 +1,17 @@
+<div class="cookie-warning" *ngIf="display">
+	<p>
+		Этот сайт использует <a href="#">куки-файлы и другие технологии</a>,
+		чтобы помочь вам в навигации, а также предоставить лучший
+		пользовательский опыт, анализировать использование наших продуктов и
+		услуг, повысить качество рекламных и маркетинговых активностей.
+		<a href="#" (click)="close($event, true)">Принять</a>
+	</p>
+	<button
+		mat-icon-button
+		color="primary"
+		aria-label="Закрыть"
+		(click)="close($event)"
+	>
+		<mat-icon svgIcon="close"></mat-icon>
+	</button>
+</div>

@@ -1,0 +1,65 @@
+@import '../../../projects/ui/src/lib/styles/variables.scss';
+
+
+$unactiveButton: rgba($almostBalck, alpha($almostBalck) - 0.3);
+navigation {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	height: 100vh;
+	width: 40px;
+	.navigation-menu {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		&__item {
+			width: 40px;
+			height: 40px;
+			text-align: center;
+			vertical-align: middle;
+			line-height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $almostBalck;
+			&--active,
+			&:hover {
+				color: $almostBalck;
+				background-color: $activeBackground;
+			}
+			&__unactive {
+				color: $unactiveButton
+			}
+			&.notification {
+				&--unread {
+					position: relative;
+					&:after {
+						position: absolute;
+						display: block;
+						content: ' ';
+						width: 8px;
+						height: 8px;
+						border-radius: 4px;
+						background-color: $alert;
+						top: 22px;
+						left: 22px;
+					}
+				}
+			}
+		}
+		&__profile {
+			width: 40px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: $unactiveButton;
+			cursor: pointer;
+			&--active,
+			&:hover {
+				color: $almostBalck;
+				background-color: $activeBackground;
+			}
+		}
+	}
+}

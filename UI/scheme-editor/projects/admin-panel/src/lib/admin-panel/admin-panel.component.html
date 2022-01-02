@@ -1,0 +1,53 @@
+<mat-card class="users-card">
+	<mat-card-header>
+		<mat-card-title>Пользователи</mat-card-title>
+		<button mat-raised-button color="primary" (click)="createNotification()">Создать рассылку</button>
+	</mat-card-header>
+	<mat-card-content>
+		<table mat-table [dataSource]="dataSource">
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef>Пользователь</th>
+				<td mat-cell *matCellDef="let element">
+					{{ element.name }}
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="group">
+				<th mat-header-cell *matHeaderCellDef>Группа</th>
+				<td mat-cell *matCellDef="let element">{{ element.group }}</td>
+			</ng-container>
+			<ng-container matColumnDef="cmd">
+				<th mat-header-cell *matHeaderCellDef></th>
+				<td mat-cell *matCellDef="let element">
+					<button
+						mat-icon-button
+						color="primary"
+						aria-label="Редактировать"
+						(click)="onUserEdit(element)"
+					>
+						<mat-icon svgIcon="edit"></mat-icon>
+					</button>
+				</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+		</table>
+
+		<mat-paginator
+			[ngClass]="{'hide-count': length===0}"
+			[length]="length"
+			[pageSize]="pageSize"
+			[pageSizeOptions]="[5, 10, 25, 100]"
+			(page)="onPageChanged($event)"
+		>
+		</mat-paginator>
+	</mat-card-content>
+</mat-card>
+
+
+<ng-container [ngSwitch]="actionPanel">
+	<ng-template ngSwitchCase="1">
+		<notification-sender class="action-panel"></notification-sender>
+	</ng-template>
+	<ng-template ngSwitchDefault></ng-template>
+</ng-container>

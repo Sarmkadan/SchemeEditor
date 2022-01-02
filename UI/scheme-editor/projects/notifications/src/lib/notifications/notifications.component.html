@@ -1,0 +1,51 @@
+<mat-card class="notification-grid notification">
+	<mat-card-header>
+		<mat-card-title>Уведомления</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<table mat-table [dataSource]="dataSource">
+			<ng-container matColumnDef="title">
+				<th mat-header-cell *matHeaderCellDef>Тема</th>
+				<td mat-cell *matCellDef="let element" [ngClass]="{'notification--unread': !element.isRead}">
+					{{ element.message.title }}
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="createdAt">
+				<th mat-header-cell *matHeaderCellDef>Время</th>
+				<td mat-cell *matCellDef="let element" [ngClass]="{'notification--unread': !element.isRead}">{{element.createdAt | dateMoment: 'YYYY-MM-DDTHH:mm:ss':'DD.MM.YYYY HH:mm:ss'}}</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectItem(row)"></tr>
+		</table>
+		<mat-card-actions>
+			<mat-paginator
+				[ngClass]="{'hide-count': length===0}"
+				[length]="length"
+				[pageSize]="pageSize"
+				[pageSizeOptions]="[5, 10, 25, 100]"
+				(page)="onPageChanged($event)"
+			>
+			</mat-paginator>
+		</mat-card-actions>
+	</mat-card-content>
+</mat-card>
+<mat-card class="notification-view notification" *ngIf="selectedItem">
+	<mat-card-header>
+		<mat-card-title>&nbsp;</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<div class="notification-view__content content">
+			<div class="content__row">
+				<label>Тема:</label><span>{{selectedItem.message.title}}</span>
+			</div>
+			<div class="content__row">
+				<label>Время:</label><span>{{selectedItem.message.createdAt | dateMoment: 'YYYY-MM-DDTHH:mm:ss':'DD.MM.YYYY'}}</span>
+			</div>
+			<div class="content__row">
+				<label>Текст</label>
+				<div>{{selectedItem.message.body}}</div>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>
